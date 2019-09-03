@@ -1,3 +1,5 @@
+Read through the tutorial here: [How to build a Google Cloud Function with NodeJS](https://www.zesty.io/mindshare/build-guides/building-google-cloud-functions-in-zestyio/)
+
 # Google Cloud Platform (GCP) Cloud Function Example for NodeJS with YAML secrets, CORS, and local testing
 
 This is an example starter codebase for launching a cloud function into Google Cloud Platform (GCP). Learn more about cloud functions at https://cloud.google.com/functions/. This cloud function is written in NodeJS v8. 
