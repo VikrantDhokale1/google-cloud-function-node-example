@@ -38,59 +38,46 @@ You are going to use your terminal to run most commands.
 
 ## Coding
 
+### index.js
+
 1. run `code .` or `atom .` to open the directory in your code editor
 2. open `.env.yaml` and add this line `TEST_SECRET: hello world` which creates a secret string `TEST_SECRET`
-3. open `index.js` and add this code 
+3. open `index.js` and add this code: 
 ```
 require('env-yaml').config({ path: './.env.yaml' })
 console.log(process.env.TEST_SECRET)
 ``` 
-
-which will load up your secret file
-
-# local deployment
-
-install functions (google's test package)
-
-`npm install`
-
-NPM deploy scripts
-
-`npm run deploy:local`
-`npm run deploy:dev`
-`npm run deploy:stage`
-`npm run deploy:prod`
-
-
-
-### Testing Locally Project
-
-Provide a Project ID as shown below before starting the Emulator:
-
+*this code will load up your secret file and output a secret to console*
+4. run `node index.js` to see `hello world` outputted to the terminal. At this point if you are running into errors, trace back to the Getting Starting section and walk through every step again.
+5. open `index.js` and replace all the code your wrote with:
 ```
-functions config set projectId zesty-dev
+require('env-yaml').config({ path: './.env.yaml' })
+
+exports.myFunction = (req, res) => {
+  const cors = require('cors')()
+
+  cors(req, res, () => {
+    myFunction(req, res)
+  })
+}
+
+const myFunction = async (req, res) => {
+    res.send(process.env.TEST_SECRET)
+}
 ```
 
-Before you can deploy a function, you need to start the Emulator as follows:
+Now you are ready to test
 
-```
-functions start
-```
+### deploying locally
 
-You stop the Emulator by calling stop:
+1. run `functions deploy myFunction --env-vars-file .env.yaml --trigger-http` which will create a local testable function, if this ran successfully, it will return you a url for your function, mine was `http://localhost:8010/my-project/us-central1/myFunction`, to test the function copy that url.
+2. open your function url in a web browser, you should see "hello world"
 
-```
-functions stop
-```
+If these steps failed you, you need to check your envirnoment setup be going over easy step in getting started.
 
-Deploy an HTTP function to the Emulator as follows:
+### deploying to the cloud
 
-```
-functions deploy bdxIntegration --env-vars-file .env.yaml --trigger-http --timeout=240s
-```
+1. run `gcloud functions deploy myFunction --trigger-http --project=my-project --env-vars-file .env.yaml --runtime=nodejs8 --memory=256mb --timeout=240s"`
+2. it should take 2 minutes to deploy, once deployed the terminal will display a URL to load it from remote, open that in your browser.
 
-Read the last 50 lines of the log from the Emulator:
-
-```
-functions logs read --limit=50
-```
+# Success!
