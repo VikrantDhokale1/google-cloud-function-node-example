@@ -36,6 +36,17 @@ You are going to use your terminal to run most commands.
 8. run `echo ".env.yaml" > .gitignore` to create a file that tells git not to commit secrets (security reasons)
 9. run `touch index.js` to create your base javascript file
 
+## Coding
+
+1. run `code .` or `atom .` to open the directory in your code editor
+2. open `.env.yaml` and add this line `TEST_SECRET: hello world` which creates a secret string `TEST_SECRET`
+3. open `index.js` and add this code 
+```
+require('env-yaml').config({ path: './.env.yaml' })
+console.log(process.env.TEST_SECRET)
+``` 
+
+which will load up your secret file
 
 # local deployment
 

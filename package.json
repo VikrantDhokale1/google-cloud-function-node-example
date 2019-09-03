@@ -17,6 +17,7 @@
   "author": "Zesty.io Platform, Inc.",
   "license": "MIT",
   "dependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "env-yaml": "^0.1.2"
   }
 }
