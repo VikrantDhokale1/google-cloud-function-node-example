@@ -1,0 +1,22 @@
+{
+  "name": "google-cloud-function-node-example",
+  "version": "1.0.0",
+  "description": "Example GCP (Google Cloud) Function with NodeJS and ENV Secrets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gcp",
+    "google",
+    "cloud",
+    "cloud",
+    "functions",
+    "nodejs"
+  ],
+  "author": "Zesty.io Platform, Inc.",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
+}
